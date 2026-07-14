@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apollo PDF</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(180deg, #003c7d 0%, #00111f 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* DIRECTV-style top bar */
+        .header {
+            height: 80px;
+            background: rgba(0,0,0,0.35);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 38px;
+            font-weight: bold;
+            color: #67c1ff;
+            text-shadow: 0 0 15px rgba(103,193,255,0.7);
+        }
+
+        .clock {
+            font-size: 24px;
+        }
+
+        /* Hero image area */
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 30px;
+        }
+
+        .hero-image {
+            max-width: 95%;
+            max-height: 500px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 24px;
+            border: 3px solid rgba(103,193,255,0.5);
+            box-shadow: 0 0 35px rgba(103,193,255,0.35);
+            background: rgba(0,0,0,0.25);
+            padding: 10px;
+        }
+
+        .section-title {
+            font-size: 30px;
+            margin-left: 80px;
+            margin-top: 10px;
+            color: #9ad7ff;
+        }
+
+        /* PDF cards row */
+        .row {
+            display: flex;
+            gap: 30px;
+            padding: 30px 80px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 360px;
+            height: 220px;
+            background: linear-gradient(135deg, #005ea8, #00305f);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.25s ease;
+            border: 4px solid transparent;
+        }
+
+        .card:hover {
+            transform: scale(1.08);
+            border-color: #67c1ff;
+            box-shadow: 0 0 30px #67c1ff;
+        }
+
+        .icon {
+            font-size: 72px;
+        }
+
+        .title {
+            font-size: 32px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            color: #d8eeff;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        /* Bottom help bar */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 15px;
+            background: rgba(0,0,0,0.35);
+            text-align: center;
+            color: #9fd8ff;
+            font-size: 18px;
+        }
+
+        @media (max-width: 900px) {
+            .section-title {
+                margin-left: 20px;
+            }
+
+            .header {
+                padding: 0 20px;
+            }
+
+            .logo {
+                font-size: 28px;
+            }
+
+            .clock {
+                font-size: 18px;
+            }
+
+            .card {
+                width: 90%;
+                max-width: 360px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">Apollo PDF</div>
+        <div class="clock" id="clock"></div>
+    </div>
+
+    <div class="hero">
+        <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Apollo_G_Bird_with_Soleil_and_Ophelia.jpg/250px-Apollo_G_Bird_with_Soleil_and_Ophelia.jpg"
+            alt="Apollo, Soleil and Ophelia"
+            class="hero-image">
+    </div>
+
+    <div class="section-title">
+        Available Documents
+    </div>
+
+    <div class="row">
+
+        <a class="card" href="apollopdf-spanish.pdf" target="_blank">
+            <div class="icon">🇪🇸</div>
+            <div class="title">Spanish</div>
+            <div class="subtitle">Open Apollo PDF in Spanish</div>
+        </a>
+
+        <a class="card" href="apollopdf-english.pdf" target="_blank">
+            <div class="icon">🇬🇧</div>
+            <div class="title">English</div>
+            <div class="subtitle">Open Apollo PDF in English</div>
+        </a>
+
+    </div>
+
+    <div class="footer">
+        ⬅ ➡ Navigate • OK Open Document
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+
+            document.getElementById("clock").textContent =
+                now.toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit"
+                });
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+
+</body>
+</html>
